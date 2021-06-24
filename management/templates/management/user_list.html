@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+<br>
+{% if user.is_admin %}
+<table class="table table-striped">
+  <thead>
+    <th scope="col">No.</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Ds ID</td>
+    <th>Mobile Number</td>
+    <th>Action</th>
+  </thead>
+  <tbody>
+  {% for user in object_list %}
+    {% if not user.is_active %}
+    <tr class="table-danger">
+      {% else %}
+      <tr class="table-success">
+    {% endif %}
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.referral_code}}</td>
+      <td>{{user.mobile}}</td>
+    <td>
+      <a href="#" class="btn btn-primary">Go to Profile</a>
+    </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+{% endblock %}

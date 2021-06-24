@@ -1,0 +1,58 @@
+<div class="col-md-8">
+  <div class="card mb-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">First Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{ request.user.first_name }}
+        </div>
+      </div>
+      <hr>
+        <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Last Name</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{ request.user.last_name }}
+        </div>
+      </div>
+        <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Email</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            {{ request.user.email }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Mobile</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+            +91 {{ request.user.mobile }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Ds Id</h6>
+        </div>
+        <div class="col-sm-9 text-secondary fw-bolder">
+          {{ request.user.referral_code }}
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <div class="col-sm-3">
+          <h6 class="mb-0">Address</h6>
+        </div>
+        <div class="col-sm-9 text-secondary">
+          {{ request.user.address }}
+        </div>
+      </div>
+    </div>
+  </div>

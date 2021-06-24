@@ -1,0 +1,35 @@
+<div class="row gutters-sm">
+                <div class="col-sm-12 mb-3">
+                  <div class="card h-100">
+                    <div class="card-body">
+                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Members</i></h6>
+                        {% if object_list.count == 0 %}
+                            <p>No members found..</p>
+                        {% else %}
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                  <th scope="col">No.</th>
+                                  <th scope="col">DS Id</th>
+                                  <th scope="col">First</th>
+                                  <th scope="col">Last</th>
+                                  <th scope="col">Mobile</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in object_list %}
+                                  <tr>
+                                  <th scope="row">{{ forloop.counter }}</th>
+                                  <td>{{user.referral_code}}</td>
+                                  <td>{{user.first_name}}</td>
+                                  <td>{{user.last_name}}</td>
+                                  <td>{{user.mobile}}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        {% endif %}
+                    </div>
+                  </div>
+                </div>
+              </div>

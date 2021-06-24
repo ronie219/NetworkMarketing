@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+    />
+    <!-- <style>
+      body {background: linear-gradient(180deg, #FFB7B7 0%, #727272 100%), radial-gradient(60.91% 100% at 50% 0%, #FFD1D1 0%, #260000 100%), linear-gradient(238.72deg, #FFDDDD 0%, #720066 100%), linear-gradient(127.43deg, #00FFFF 0%, #FF4444 100%), radial-gradient(100.22% 100% at 70.57% 0%, #FF0000 0%, #00FFE0 100%), linear-gradient(127.43deg, #B7D500 0%, #3300FF 100%)
+      ;background-blend-mode: screen, overlay, hard-light, color-burn, color-dodge, normal}
+    </style> -->
+
+  <style>
+      .vl {
+        border-left: 6px solid green;
+        height: 500px;
+      }
+      </style>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"></script>
+    
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          {% if user.is_authenticated %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              {% if user.is_admin %}
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'management:approve' %}">
+                    Approve User
+                  </a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'management:user-list' %}">Users</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'management:profile' %}">Profile</a>
+                </li>
+              {%else%}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'management:profile' %}">Profile</a>
+              </li>
+              {% endif%}
+          </ul>
+          <div class="d-flex navbar-right">
+            <a class="btn btn-outline-danger" type="submit" href="{% url 'accounts:logout' %}">Logout</a>
+          </div>
+          {% else %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+            <div class="d-flex navbar-right">
+              <a class="btn btn-outline-success" href="{% url 'accounts:login' %}" type="submit">Sign In</a>
+            </div>
+            ;&nbsp;
+            <div class="d-flex navbar-right">
+              <a class="btn btn-outline-primary" href="{% url 'accounts:signup' %}" type="submit">Sign up</a>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <div class="ui container">{% block content %}
+
+      {% endblock %}</div>
+  </body>
+
+</html>

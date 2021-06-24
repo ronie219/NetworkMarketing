@@ -1,0 +1,42 @@
+{%  extends 'base.html' %}
+{% block content %}
+    {% if user.is_admin %}
+<br>
+{% if object_list.count == 0 %}
+    <div class="container text-center">
+        <h4>No request pending...</h4>
+    </div>
+
+{% else %}
+<table class="table table-sm">
+    <thead>
+    <tr>
+      <th scope="col">Ds ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Mobile</th>
+      <th scope="col">Email</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+    <tbody>
+    {% for user in object_list %}
+        <tr>
+      <th scope="row"><a href="#">{{user.referral_code}}</a></th>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.mobile}}</td>
+      <td>{{user.email}}</td>
+      <td>
+          <a href="{% url 'management:approve-user' pk=user.id %}" class="btn btn-success">Approve</a>
+          <a href="{% url 'management:delete' pk=user.id %}" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+    {% else %}
+    {% include 'permission_denied.html' %}
+    {% endif %}
+{% endblock %}

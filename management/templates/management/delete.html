@@ -1,0 +1,15 @@
+{%  extends 'base.html' %}
+{% block content %}
+<br>
+<div class="card container" style="width: auto;float:left">
+    <form method="POST">
+        {% csrf_token %}
+      <div class="card-body">
+        <h5 class="card-title">Delete User</h5>
+        <p class="card-text">Are you want to delete {{object.first_name}} {{object.last_name}} user?</p>
+        <a href="{% url 'management:approve' %}" class="btn btn-warning">Go back</a>
+        <button type="submit" class="btn btn-danger">Delete</button>
+      </div>
+    </form>
+</div>
+{% endblock %}

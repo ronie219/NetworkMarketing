@@ -1,0 +1,28 @@
+{%  extends 'base.html' %}
+{% block content %}
+{% load bootstrap3 %}
+<br>
+<div class="container">
+		<div class="main-body">
+			<div class="card border-dark mb-3" style="max-width: 30rem;  margin: auto;width: 50%;border: 3px solid green;padding: 10px;">
+				<div class="mb-6">
+					<div class="card">
+						<div class="card-body">
+							<form method="POST">
+								{% bootstrap_messages %}
+								{% bootstrap_form form %}
+								{% csrf_token %}
+								<br>
+								<button type="submit" class="btn btn-success">
+								  {% bootstrap_icon "star" %} Update
+								</button>
+								<a class="btn btn-warning" href="{% url 'management:profile' %}">Cancel</a>
+                            </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
